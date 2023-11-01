@@ -1,0 +1,14 @@
+on: [workflow_dispatch]
+jobs:
+   container_action_job:
+     runs-on: ubuntu-latest
+     name: container action demo
+     steps:
+       - name: First container action step
+         id: mycontaineraction
+         uses: chamindac/CustomActions/mycontaineraction@v3
+         with:
+           your-name: 'Sebastian'
+         # Use the output from the `mycontaineraction` step
+       - name: Get the output time
+         run: echo "The time was ${{ steps.mycontaineraction.outputs.timeofmessage }}"
